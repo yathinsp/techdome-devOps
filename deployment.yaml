@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techdome-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techdome-app
+  template:
+    metadata:
+      labels:
+        app: techdome-app
+    spec:
+      containers:
+        - name: frontend
+          image: techdome-frontend:latest
+          ports:
+            - containerPort: 80
+        - name: backend
+          image: techdome-backend:latest
+          ports:
+            - containerPort: 5000
